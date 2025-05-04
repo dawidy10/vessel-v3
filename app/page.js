@@ -14,6 +14,15 @@ export default async function Home() {
 		<>
 			<p>Hello {data.user.email}</p>
 			<LogOut />
+			<br />
+			<h3>TODO:</h3>
+			<ul>
+				<li>File upload</li>
+				<li>Activity graph</li>
+				<li>Profile page</li>
+				<li>Friend request</li>
+				<li>Threads/Posts</li>
+			</ul>
 		</>
 	);
 }
