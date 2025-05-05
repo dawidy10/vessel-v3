@@ -9,6 +9,8 @@ import { createClient } from "@/utils/supabase/server";
 export default async function uploadFile(formData) {
 	const image = formData.get("fileInput");
 	const uid = uuidv4() + image.name;
+
+	const caption = formData.get("caption");
 	const supabase = await createClient();
 
 	const { data: userdata, err } = await supabase.auth.getUser();
@@ -19,7 +21,23 @@ export default async function uploadFile(formData) {
 	const { data, error } = await supabase.storage.from("uploads").upload(uid, image);
 
 	if (error) {
-		redirect("/error");
+		console.log("Error uploading file");
+		return;
+	}
+
+	const { data: url } = supabase.storage.from("uploads").getPublicUrl(uid);
+
+	const { postData, postError } = await supabase.from("posts").insert([
+		{
+			caption: caption,
+			file_src: url.publicUrl,
+			author_id: userdata.user.id,
+		},
+	]);
+
+	if (postError) {
+		console.error("Error inserting data", error);
+		return;
 	}
 
 	revalidatePath("/", "layout");

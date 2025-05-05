@@ -17,7 +17,7 @@ export default async function Home() {
 			<br />
 			<h3>TODO:</h3>
 			<ul>
-				<li>File upload</li>
+				<li>File upload [DONE]</li>
 				<li>Activity graph</li>
 				<li>Profile page</li>
 				<li>Friend request</li>
