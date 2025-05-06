@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
+import Profile from "@/components/Profile";
 
 export default async function ProfilePage() {
 	const supabase = await createClient();
@@ -8,9 +9,7 @@ export default async function ProfilePage() {
 	return (
 		<div>
 			<h1>Profile</h1>
-			<p>Hello, {profileData.name}</p>
-			<p>@{profileData.username}</p>
-			<p>{data.user.email}</p>
+			<Profile profileData={profileData} />
 		</div>
 	);
 }
