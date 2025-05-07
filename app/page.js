@@ -18,7 +18,8 @@ export default async function Home() {
 			<h3>TODO:</h3>
 			<ul>
 				<li>File upload [DONE]</li>
-				<li>Profile page [IN PROGRESS...]</li>
+				<li>Basic Profile page [DONE]</li>
+				<li>Basic User page [DONE]</li>
 				<li>Activity graph</li>
 				<li>Friend request</li>
 				<li>Threads/Posts</li>
