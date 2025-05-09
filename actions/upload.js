@@ -27,11 +27,20 @@ export default async function uploadFile(formData) {
 
 	const { data: url } = supabase.storage.from("uploads").getPublicUrl(uid);
 
+	const now = new Date(); // ora locală a browserului
+	const date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(
+		2,
+		"0",
+	)}T${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}:${String(
+		now.getSeconds(),
+	).padStart(2, "0")}`;
+
 	const { postData, postError } = await supabase.from("posts").insert([
 		{
 			caption: caption,
 			file_src: url.publicUrl,
 			author_id: userdata.user.id,
+			created_at: date,
 		},
 	]);
 

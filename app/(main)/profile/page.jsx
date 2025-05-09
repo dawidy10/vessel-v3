@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import Profile from "@/components/Profile";
+import ActivityTracker from "@/components/ActivityTracker";
 
 export default async function ProfilePage() {
 	var profileData = null;
@@ -16,6 +17,7 @@ export default async function ProfilePage() {
 		<div>
 			<h1>Profile</h1>
 			{profileData && <Profile profileData={profileData} />}
+			{posts && <ActivityTracker activityData={posts} />}
 		</div>
 	);
 }
