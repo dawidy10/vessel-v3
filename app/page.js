@@ -20,7 +20,7 @@ export default async function Home() {
 				<li>File upload [DONE]</li>
 				<li>Basic Profile page [DONE]</li>
 				<li>Basic User page [DONE]</li>
-				<li>Activity graph</li>
+				<li>Activity graph [IN PROGRESS] : CHECK IF USER ALREADY HAS ACTIVITY TODAY AND DONT OVERWRITE IT</li>
 				<li>Friend request</li>
 				<li>Threads/Posts</li>
 			</ul>
