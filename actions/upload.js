@@ -40,6 +40,33 @@ export default async function uploadFile(formData) {
 		return;
 	}
 
+	const { activity, activityError } = await supabase
+		.from("profiles")
+		.select("activity")
+		.eq("id", userdata.user.id)
+		.single();
+
+	if (error) {
+		console.error("Eroare la citire:", error);
+		return;
+	}
+
+	const existingActivity = data.activity || {};
+
+	const today = new Date();
+	const dateKey = today.toISOString().split("T")[0]; // "2025-05-09"
+
+	const postLink = url.publicUrl;
+
+	existingActivity[dateKey] = postLink;
+
+	const { newActivity, newActivityError } = await supabase
+		.from("profiles")
+		.update({
+			activity: existingActivity,
+		})
+		.eq("id", userdata.user.id);
+
 	revalidatePath("/", "layout");
 	redirect("/");
 }
