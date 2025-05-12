@@ -25,11 +25,25 @@ export default function ActivityTracker({ activityData }) {
 			))}
 			<div className="grid grid-cols-52">
 				{dates.map((day) => (
-					<div className="border" key={day}>
+					<div className="mt-2" key={day}>
+						{/* {activityData.map((post) => (
+							<p key={post.id}>{post.created_at == day ? <> ✔️</> : <>❌</>}</p>
+						))} */}
 						{activityData.map((post) => (
-							<p className="border" key={post.id}>
-								{post.created_at == day ? <> {day} ✔️</> : <>{day} ❌</>}
-							</p>
+							<div
+								key={post.id}
+								className={`w-4 h-4 ${post.created_at == day ? "bg-orange-500" : "bg-orange-300"}`}
+							>
+								{/* {post.created_at == day ? (
+									<>
+										<div key={post.id} className="bg-orange-500 w-4 h-4"></div>
+									</>
+								) : (
+									<>
+										<div key={post.id} className="bg-orange-300 w-4 h-4"></div>
+									</>
+								)} */}
+							</div>
 						))}
 					</div>
 				))}
