@@ -33,23 +33,6 @@ export default function ActivityTracker({ activityData }) {
 						const hasActivity = activityData.some((post) => post.created_at === day);
 						const activity = activityData.find((post) => post.created_at === day);
 						return (
-							// <div className="mt-1" key={day}>
-							// 	{hasActivity ? (
-							// 		<TooltipProvider>
-							// 			<Tooltip>
-							// 				<TooltipTrigger>
-							// 					<div className="w-2.5 h-2.5 rounded-xs bg-orange-500"></div>
-							// 				</TooltipTrigger>
-							// 				<TooltipContent>
-							// 					<p>Add to library</p>
-							// 				</TooltipContent>
-							// 			</Tooltip>
-							// 		</TooltipProvider>
-							// 	) : (
-							// 		<div className="w-2.5 h-2.5 rounded-xs bg-orange-300"></div>
-							// 	)}
-							// </div>
-
 							<TooltipProvider key={day}>
 								<div className="mt-1">
 									<Tooltip>
