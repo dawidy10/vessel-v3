@@ -20,7 +20,7 @@ export default async function Home() {
 				<li>File upload [DONE]</li>
 				<li>Basic Profile page [DONE]</li>
 				<li>Basic User page [DONE]</li>
-				<li>Activity graph [IN PROGRESS]</li>
+				<li>Activity graph [DONE]</li>
 				<li>Friend request</li>
 				<li>Threads/Posts</li>
 			</ul>

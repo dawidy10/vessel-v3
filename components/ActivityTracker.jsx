@@ -2,7 +2,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 export default function ActivityTracker({ activityData }) {
 	const dateOnly = activityData[0].created_at.split("T")[0];
-	// console.log(dateOnly);
 
 	for (let activity of activityData) {
 		activity.created_at = activity.created_at.split("T")[0];
@@ -31,7 +30,7 @@ export default function ActivityTracker({ activityData }) {
 				<div className="inline-grid grid-cols-52 auto-cols-min gap-x-[2px]">
 					{dates.map((day) => {
 						const hasActivity = activityData.some((post) => post.created_at === day);
-						const activity = activityData.find((post) => post.created_at === day);
+						const activity = activityData.filter((post) => post.created_at === day);
 						return (
 							<TooltipProvider key={day}>
 								<div className="mt-1">
@@ -43,15 +42,23 @@ export default function ActivityTracker({ activityData }) {
 												}`}
 											/>
 										</TooltipTrigger>
-										{hasActivity && (
-											<TooltipContent>
-												<div>
-													<p>
-														{activity.id} : {activity.caption}
-													</p>
+										<TooltipContent>
+											{hasActivity ? (
+												<div className="space-y-1">
+													<p className="text-xs">{day}</p>
+													{activity.map((post) => (
+														<p key={post.id} className="text-xs">
+															{post.id} : {post.caption}
+														</p>
+													))}
 												</div>
-											</TooltipContent>
-										)}
+											) : (
+												<div className="space-y-1">
+													<p className="text-xs">{day}</p>
+													<p className="text-xs">No activity</p>
+												</div>
+											)}
+										</TooltipContent>
 									</Tooltip>
 								</div>
 							</TooltipProvider>
