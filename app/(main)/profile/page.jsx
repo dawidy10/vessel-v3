@@ -11,7 +11,7 @@ export default async function ProfilePage() {
 
 	const { data: posts, postsError } = await supabase.from("posts").select("*").eq("author_id", data.user.id);
 
-	console.log(posts);
+	// console.log(posts);
 
 	return (
 		<div>

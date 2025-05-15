@@ -1,6 +1,8 @@
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
 export default function ActivityTracker({ activityData }) {
 	const dateOnly = activityData[0].created_at.split("T")[0];
-	console.log(dateOnly);
+	// console.log(dateOnly);
 
 	for (let activity of activityData) {
 		activity.created_at = activity.created_at.split("T")[0];
@@ -20,33 +22,59 @@ export default function ActivityTracker({ activityData }) {
 
 	return (
 		<>
-			{activityData.map((post) => (
-				<div key={post.id}>{post.file_src}</div>
-			))}
-			<div className="grid grid-cols-52">
-				{dates.map((day) => (
-					<div className="mt-2" key={day}>
-						{/* {activityData.map((post) => (
-							<p key={post.id}>{post.created_at == day ? <> ✔️</> : <>❌</>}</p>
-						))} */}
-						{activityData.map((post) => (
-							<div
-								key={post.id}
-								className={`w-4 h-4 ${post.created_at == day ? "bg-orange-500" : "bg-orange-300"}`}
-							>
-								{/* {post.created_at == day ? (
-									<>
-										<div key={post.id} className="bg-orange-500 w-4 h-4"></div>
-									</>
-								) : (
-									<>
-										<div key={post.id} className="bg-orange-300 w-4 h-4"></div>
-									</>
-								)} */}
-							</div>
-						))}
+			<div>
+				{activityData.map((post) => (
+					<div key={post.id}>
+						{post.id} : {post.file_src}
 					</div>
 				))}
+				<div className="inline-grid grid-cols-52 auto-cols-min gap-x-[2px]">
+					{dates.map((day) => {
+						const hasActivity = activityData.some((post) => post.created_at === day);
+						const activity = activityData.find((post) => post.created_at === day);
+						return (
+							// <div className="mt-1" key={day}>
+							// 	{hasActivity ? (
+							// 		<TooltipProvider>
+							// 			<Tooltip>
+							// 				<TooltipTrigger>
+							// 					<div className="w-2.5 h-2.5 rounded-xs bg-orange-500"></div>
+							// 				</TooltipTrigger>
+							// 				<TooltipContent>
+							// 					<p>Add to library</p>
+							// 				</TooltipContent>
+							// 			</Tooltip>
+							// 		</TooltipProvider>
+							// 	) : (
+							// 		<div className="w-2.5 h-2.5 rounded-xs bg-orange-300"></div>
+							// 	)}
+							// </div>
+
+							<TooltipProvider key={day}>
+								<div className="mt-1">
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<div
+												className={`w-2.5 h-2.5 rounded-xs ${
+													hasActivity ? "bg-orange-500" : "bg-orange-300"
+												}`}
+											/>
+										</TooltipTrigger>
+										{hasActivity && (
+											<TooltipContent>
+												<div>
+													<p>
+														{activity.id} : {activity.caption}
+													</p>
+												</div>
+											</TooltipContent>
+										)}
+									</Tooltip>
+								</div>
+							</TooltipProvider>
+						);
+					})}
+				</div>
 			</div>
 		</>
 	);
