@@ -21,7 +21,7 @@ export default async function Home() {
 				<li>Basic Profile page [DONE]</li>
 				<li>Basic User page [DONE]</li>
 				<li>Activity graph [DONE]</li>
-				<li>Friend request</li>
+				<li>Follow request [DONE]</li>
 				<li>Threads/Posts</li>
 			</ul>
 		</>

@@ -7,12 +7,13 @@ import { useEffect, useState } from "react";
 
 export default function User() {
 	const params = useParams();
-	const id = params.id;
+	const id = Array.isArray(params.id) ? params.id[0] : params.id;
+	// const id = params.id;
 
 	const [user, setUser] = useState(null);
 	// const [posts, setPosts] = useState([])
 	const [Uauth, setUauth] = useState(null);
-	// const [followers, setfollowers] = useState([])
+	const [followers, setfollowers] = useState([]);
 	useEffect(() => {
 		async function getUser() {
 			const supabase = createClient();
@@ -29,15 +30,16 @@ export default function User() {
 			const { data: userData, er } = await supabase.from("profiles").select("*").eq("id", id);
 
 			console.log(userData);
-			// const {data: followers , e} = await supabase
-			// .from('followers')
-			// .select('*')
-			// .eq('following_id', id)
-
+			const { data: followersData, e } = await supabase.from("followers").select("*").eq("following_id", id);
 			setUser(userData[0]);
 			// setPosts(userPosts)
 			setUauth(auth);
-			// setfollowers(followers)
+			if (e) {
+				console.log(e);
+			} else {
+				console.log(followersData);
+			}
+			setfollowers(followersData);
 		}
 
 		getUser();
@@ -45,7 +47,7 @@ export default function User() {
 	return (
 		<>
 			<p>User</p>
-			{user && <UserProfile profileData={user} />}
+			{user && <UserProfile profileData={user} followers={followers} authUserId={Uauth} />}
 		</>
 	);
 }
