@@ -1,4 +1,4 @@
-export default function UploadForm({ uploadAction }) {
+export default function ActivityUploadForm({ uploadAction }) {
 	return (
 		<form action={uploadAction}>
 			<input type="file" name="fileInput" id="fileInput" />
