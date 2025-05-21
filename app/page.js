@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import LogOut from "@/components/LogOut";
-
+import HomeFeed from "@/components/HomeFeed";
 import { createClient } from "@/utils/supabase/server";
 export default async function Home() {
 	const supabase = await createClient();
@@ -14,6 +14,7 @@ export default async function Home() {
 		<>
 			<p>Hello {data.user.email}</p>
 			<LogOut />
+			<HomeFeed />
 			<br />
 			<h3>TODO:</h3>
 			<ul>
@@ -22,7 +23,7 @@ export default async function Home() {
 				<li>Basic User page [DONE]</li>
 				<li>Activity graph [DONE]</li>
 				<li>Follow request [DONE]</li>
-				<li>Threads/Posts</li>
+				<li>Threads/Posts [IN PROGRESS]</li>
 			</ul>
 		</>
 	);
