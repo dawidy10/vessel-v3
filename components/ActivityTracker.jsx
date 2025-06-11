@@ -22,12 +22,12 @@ export default function ActivityTracker({ activityData }) {
 	return (
 		<>
 			<div>
-				{activityData.map((post) => (
+				{/* {activityData.map((post) => (
 					<div key={post.id}>
 						{post.id} : {post.file_src}
 					</div>
-				))}
-				<div className="inline-grid grid-cols-52 auto-cols-min gap-x-[2px]">
+				))} */}
+				<div className="inline-grid grid-cols-52 auto-cols-min gap-x-[3px]">
 					{dates.map((day) => {
 						const hasActivity = activityData.some((post) => post.created_at === day);
 						const activity = activityData.filter((post) => post.created_at === day);
@@ -38,7 +38,7 @@ export default function ActivityTracker({ activityData }) {
 										<TooltipTrigger asChild>
 											<div
 												className={`w-2.5 h-2.5 rounded-xs ${
-													hasActivity ? "bg-orange-500" : "bg-orange-300"
+													hasActivity ? "bg-accent" : "bg-muted"
 												}`}
 											/>
 										</TooltipTrigger>
