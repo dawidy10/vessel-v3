@@ -4,6 +4,7 @@ import LogOut from "@/components/LogOut";
 import HomeFeed from "@/components/HomeFeed";
 import { createClient } from "@/utils/supabase/server";
 import ActivityTracker from "@/components/ActivityTracker";
+import Link from "next/link";
 export default async function Home() {
 	const supabase = await createClient();
 	const { data, error } = await supabase.auth.getUser();
@@ -20,6 +21,9 @@ export default async function Home() {
 					<h1 className="text-2xl font-bold">Thursday, 12 May</h1>
 					<p className="text-lg">No activity</p>
 					<ActivityTracker activityData={posts} />
+					<button className="w-full bg-none border-1px mt-6 emptyBtn">
+						<Link href="/upload/activity">+ Add Activity</Link>
+					</button>
 				</div>
 			</div>
 

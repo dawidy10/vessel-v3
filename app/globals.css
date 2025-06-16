@@ -52,6 +52,16 @@ p {
 	font-family: "Montserrat", sans-serif;
 }
 
+.emptyBtn {
+	border: 1px solid var(--accent);
+	border-radius: 10px;
+	color: var(--accent);
+	padding: 6px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	cursor: pointer;
+}
+
 :root {
 	/* --font-main: "Montserrat", sans-serif;
 	--font-title: "K2D", sans-serif; */
