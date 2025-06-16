@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, K2D } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -11,6 +11,17 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+	subsets: ["latin"],
+	variable: "--principal",
+});
+
+const k2d = K2D({
+	subsets: ["latin"],
+	weight: ["600"],
+	variable: "--antet",
 });
 
 export const metadata = {

@@ -17,6 +17,8 @@ export default async function Home() {
 			<LogOut />
 			<div className="w-full flex flex-row justify-center">
 				<div className="">
+					<h1 className="text-2xl font-bold">Thursday, 12 May</h1>
+					<p className="text-lg">No activity</p>
 					<ActivityTracker activityData={posts} />
 				</div>
 			</div>
