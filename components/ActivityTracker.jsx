@@ -7,12 +7,24 @@ export default function ActivityTracker({ activityData }) {
 		activity.created_at = activity.created_at.split("T")[0];
 	}
 
+	// const dates = [];
+	// const today = new Date();
+	// const oneYearAgo = new Date();
+	// oneYearAgo.setFullYear(today.getFullYear() - 1);
+
+	// for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+	// 	const yyyy = d.getFullYear();
+	// 	const mm = String(d.getMonth() + 1).padStart(2, "0");
+	// 	const dd = String(d.getDate()).padStart(2, "0");
+	// 	dates.push(`${yyyy}-${mm}-${dd}`);
+	// }
+
 	const dates = [];
 	const today = new Date();
-	const oneYearAgo = new Date();
-	oneYearAgo.setFullYear(today.getFullYear() - 1);
+	const sixMonthsAgo = new Date();
+	sixMonthsAgo.setMonth(today.getMonth() - 5); // ← aici e schimbarea
 
-	for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+	for (let d = new Date(sixMonthsAgo); d <= today; d.setDate(d.getDate() + 1)) {
 		const yyyy = d.getFullYear();
 		const mm = String(d.getMonth() + 1).padStart(2, "0");
 		const dd = String(d.getDate()).padStart(2, "0");
@@ -27,7 +39,7 @@ export default function ActivityTracker({ activityData }) {
 						{post.id} : {post.file_src}
 					</div>
 				))} */}
-				<div className="inline-grid grid-cols-52 auto-cols-min gap-x-[3px]">
+				<div className="inline-grid grid-cols-26 auto-cols-min gap-x-[3px] gap-y-[3px] w-full">
 					{dates.map((day) => {
 						const hasActivity = activityData.some((post) => post.created_at === day);
 						const activity = activityData.filter((post) => post.created_at === day);
@@ -37,7 +49,7 @@ export default function ActivityTracker({ activityData }) {
 									<Tooltip>
 										<TooltipTrigger asChild>
 											<div
-												className={`w-2.5 h-2.5 rounded-xs ${
+												className={`w-3.5 h-3.5 rounded-xs ${
 													hasActivity ? "bg-accent" : "bg-muted"
 												}`}
 											/>

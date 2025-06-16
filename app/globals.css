@@ -51,6 +51,9 @@ h1 {
 p {
 	font-family: "Montserrat", sans-serif;
 }
+* {
+	box-sizing: border-box;
+}
 
 .emptyBtn {
 	border: 1px solid var(--accent);

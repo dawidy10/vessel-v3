@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 import LogOut from "@/components/LogOut";
 import HomeFeed from "@/components/HomeFeed";
 import { createClient } from "@/utils/supabase/server";
-import Link from "next/link";
 import HomepageActivity from "@/components/homepageActivity";
+import FriendsSuggestions from "@/components/FriendsSuggestions";
 export default async function Home() {
 	const supabase = await createClient();
 	const { data, error } = await supabase.auth.getUser();
@@ -16,8 +16,11 @@ export default async function Home() {
 		<>
 			<p>Hello {data.user.email}</p>
 			<LogOut />
-			<div className="w-full flex flex-row justify-center">
-				<HomepageActivity posts={posts} />
+			<div className="flex flex-col items-center">
+				<div className="w-[45vw] flex flex-col gap-20">
+					<HomepageActivity posts={posts} />
+					<FriendsSuggestions id={data.user.id} />
+				</div>
 			</div>
 
 			{/* <HomeFeed />
