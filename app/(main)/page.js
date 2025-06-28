@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import LogOut from "@/components/LogOut";
 import HomeFeed from "@/components/HomeFeed";
 import { createClient } from "@/utils/supabase/server";
 import HomepageActivity from "@/components/homepageActivity";
@@ -14,8 +13,6 @@ export default async function Home() {
 	}
 	return (
 		<>
-			<p>Hello {data.user.email}</p>
-			<LogOut />
 			<div className="flex flex-col items-center">
 				<div className="w-[45vw] flex flex-col gap-20">
 					<HomepageActivity posts={posts} />
