@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import ThreadPost from "./ThreadPost";
+import ActivityPost from "./ActivityPost";
 
 export default async function HomeFeed({ authUserID }) {
 	const cookieStore = cookies();
@@ -20,8 +21,7 @@ export default async function HomeFeed({ authUserID }) {
 						<ThreadPost author={post.profiles} content={post} likes={post.likes} authUserID={authUserID} />
 					) : (
 						<>
-							<p className="font-bold mt-4">{post.content.caption}</p>
-							<p>{post.text}</p>
+							<ActivityPost author={post.profiles} content={post} authUserID={authUserID} />
 						</>
 					)}
 				</div>
