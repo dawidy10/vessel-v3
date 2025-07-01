@@ -14,7 +14,7 @@ export default async function Navbar() {
 		.select("name,avatar")
 		.eq("id", data.user.id);
 	return (
-		<nav className="h-20 md:h-14 flex w-[100vw] border-b-1 justify-between px-14 items-center fixed bg-background">
+		<nav className="h-20 md:h-16 flex w-[100vw] border-b-1 justify-between px-14 items-center fixed bg-background">
 			<Link href="/">
 				<LogoVessel />
 			</Link>

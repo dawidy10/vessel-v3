@@ -9,13 +9,24 @@ import {
 import Link from "next/link";
 import LogOut from "@/components/LogOut";
 import { ChevronDown } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function NavDropdown({ avatar, name }) {
 	return (
 		<>
 			<DropdownMenu>
 				<DropdownMenuTrigger className="focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0">
-					<div className="flex cursor-pointer">
+					<div className="flex cursor-pointer items-center gap-2">
+						<Avatar>
+							<AvatarImage src={avatar} />
+							<AvatarFallback>
+								{name
+									.split(" ")
+									.map((word) => word[0])
+									.join("")
+									.toUpperCase()}{" "}
+							</AvatarFallback>
+						</Avatar>
 						{name}
 						<ChevronDown />
 					</div>
