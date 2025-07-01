@@ -7,9 +7,18 @@ export default function HomepageActivity({ posts }) {
 		return post.created_at.startsWith(today);
 	});
 
+	const tday = new Date();
+	const weekday = tday.toLocaleDateString("en-GB", { weekday: "long" });
+	const dayMonth = tday.toLocaleDateString("en-GB", {
+		day: "numeric",
+		month: "long",
+	});
+
+	const formattedDate = `${weekday}, ${dayMonth}`;
+
 	return (
 		<div>
-			<h1 className="text-2xl font-bold">Thursday, 12 May</h1>
+			<h1 className="text-2xl font-bold">{formattedDate}</h1>
 			{postsToday.length == 0 ? (
 				<p className="text-lg">No activity today.</p>
 			) : postsToday.length == 1 ? (
