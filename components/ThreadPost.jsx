@@ -10,6 +10,7 @@ import {
 import { EllipsisVertical } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDistanceToNow } from "date-fns";
+import PostFooter from "./PostFooter";
 
 export default function ThreadPost({ author, content }) {
 	const date = new Date(content.timestamptz);
@@ -42,7 +43,7 @@ export default function ThreadPost({ author, content }) {
 				<p className="mt-2">{content.content.text}</p>
 			</CardContent>
 			<CardFooter>
-				<p>Card Footer</p>
+				<PostFooter />
 			</CardFooter>
 		</Card>
 	);
