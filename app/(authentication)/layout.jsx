@@ -9,13 +9,8 @@ export const metadata = {
 
 export default function AuthLayout({ children }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<head />
-			<body>
-				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-					<div>{children}</div>
-				</ThemeProvider>
-			</body>
-		</html>
+		<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+			<div>{children}</div>
+		</ThemeProvider>
 	);
 }

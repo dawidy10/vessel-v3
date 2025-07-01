@@ -10,14 +10,9 @@ export const metadata = {
 
 export default function MainLayout({ children }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<head />
-			<body>
-				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-					<Navbar />
-					<div className="pt-24">{children}</div>
-				</ThemeProvider>
-			</body>
-		</html>
+		<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+			<Navbar />
+			<div className="pt-24">{children}</div>
+		</ThemeProvider>
 	);
 }

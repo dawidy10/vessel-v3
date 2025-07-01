@@ -24,7 +24,7 @@ export default function HomepageActivity({ posts }) {
 			) : postsToday.length == 1 ? (
 				<p className="text-lg">One activity today.</p>
 			) : (
-				<p className="text-lg">{postsToday.length} activities toady.</p>
+				<p className="text-lg">{postsToday.length} activities today.</p>
 			)}
 			<ActivityTracker activityData={posts} />
 			<button className="w-full bg-none border-1px mt-6 emptyBtn">
