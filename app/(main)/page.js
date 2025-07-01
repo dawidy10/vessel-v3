@@ -17,9 +17,9 @@ export default async function Home() {
 				<div className="w-[45vw] flex flex-col gap-20">
 					<HomepageActivity posts={posts} />
 					<FriendsSuggestions id={data.user.id} />
+					<HomeFeed />
 				</div>
 			</div>
-
 			{/* <HomeFeed />
 			<br />
 			<h3>TODO:</h3>

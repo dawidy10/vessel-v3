@@ -1,11 +1,12 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
+import ThreadPost from "./ThreadPost";
 
 export default async function HomeFeed() {
 	const cookieStore = cookies();
 	const supabase = await createClient({ cookies: () => cookieStore });
 	const { data: posts, error } = await supabase
-		.from("threads")
+		.from("posts")
 		.select("*, profiles(id,username, name, avatar)")
 		// .in("user_id", followedUserIds)
 		.order("created_at", { ascending: false });
@@ -15,8 +16,14 @@ export default async function HomeFeed() {
 		<>
 			{posts.map((post, index) => (
 				<div key={index}>
-					<p className="font-bold mt-4">{post.title}</p>
-					<p>{post.text}</p>
+					{post.type == "thread" ? (
+						<ThreadPost author={post.profiles} content={post} />
+					) : (
+						<>
+							<p className="font-bold mt-4">{post.content.caption}</p>
+							<p>{post.text}</p>
+						</>
+					)}
 				</div>
 			))}
 		</>

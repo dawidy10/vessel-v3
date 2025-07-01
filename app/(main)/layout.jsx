@@ -15,7 +15,7 @@ export default function MainLayout({ children }) {
 			<body>
 				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
 					<Navbar />
-					<div className="pt-20">{children}</div>
+					<div className="pt-24">{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>
