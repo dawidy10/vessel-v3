@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import SearchBar from "./SearchBar";
 import NavDropdown from "./NavDropdown";
 import { createClient } from "@/utils/supabase/server";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import LogoVessel from "./Logo";
+import SearchBar from "./SearchBar";
 
 export default async function Navbar() {
 	const supabase = await createClient();
@@ -18,12 +18,13 @@ export default async function Navbar() {
 			<Link href="/">
 				<LogoVessel />
 			</Link>
+			<SearchBar />
+
 			<div className="flex gap-10">
 				<NavDropdown avatar={profData[0].avatar} name={profData[0].name} />
 				<ThemeToggle />
 			</div>
 
-			{/* <SearchBar /> */}
 			{/* {data.user && <NavDropdown avatar={data.user.user_metadata.avatar} name={data.user.user_metadata.name} />} */}
 		</nav>
 	);
