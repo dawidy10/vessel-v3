@@ -1,4 +1,5 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import Link from "next/link";
 
 export default function ActivityTracker({ activityData }) {
 	const dateOnly = activityData[0].created_at.split("T")[0];
@@ -56,13 +57,19 @@ export default function ActivityTracker({ activityData }) {
 										</TooltipTrigger>
 										<TooltipContent>
 											{hasActivity ? (
-												<div className="space-y-1">
+												<div className="space-y-1 flex flex-col">
 													<p className="text-xs">{day}</p>
-													{activity.map((post) => (
-														<p key={post.id} className="text-xs">
-															{post.id} : {post.caption}
-														</p>
-													))}
+													{activity.map((post) =>
+														post.type == "activity" ? (
+															<Link href="" key={post.id} className="font-bold text-xs">
+																{post.caption}
+															</Link>
+														) : (
+															<Link href="" key={post.id} className="font-bold text-xs">
+																{post.type}
+															</Link>
+														),
+													)}
 												</div>
 											) : (
 												<div className="space-y-1">
