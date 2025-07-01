@@ -12,7 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDistanceToNow } from "date-fns";
 import PostFooter from "./PostFooter";
 
-export default function ThreadPost({ author, content }) {
+export default function ThreadPost({ author, content, likes, authUserID }) {
 	const date = new Date(content.timestamptz);
 	const timeAgo = formatDistanceToNow(date, { addSuffix: true });
 	return (
@@ -43,7 +43,7 @@ export default function ThreadPost({ author, content }) {
 				<p className="mt-2">{content.content.text}</p>
 			</CardContent>
 			<CardFooter>
-				<PostFooter />
+				<PostFooter postID={content.id} likes={likes} authUserID={authUserID} />
 			</CardFooter>
 		</Card>
 	);
