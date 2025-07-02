@@ -14,10 +14,11 @@ export default async function ProfilePage() {
 	// console.log(posts);
 
 	return (
-		<div>
-			<h1>Profile</h1>
-			{profileData && <Profile profileData={profileData} />}
-			{posts && <ActivityTracker activityData={posts} />}
+		<div className="flex flex-col items-center">
+			<div className="flex flex-col items-center w-[60vw] gap-20 mt-10">
+				{profileData && <Profile profileData={profileData} />}
+				{posts && <ActivityTracker activityData={posts} />}
+			</div>
 		</div>
 	);
 }
