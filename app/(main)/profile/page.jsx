@@ -15,9 +15,10 @@ export default async function ProfilePage() {
 
 	return (
 		<div className="flex flex-col items-center">
-			<div className="flex flex-col items-center w-[60vw] gap-20 mt-10">
+			<div className="flex flex-col items-center w-[60vw] mt-10">
 				{profileData && <Profile profileData={profileData} />}
-				{posts && <ActivityTracker activityData={posts} />}
+
+				{posts && <ActivityTracker variant="profile" activityData={posts} />}
 			</div>
 		</div>
 	);

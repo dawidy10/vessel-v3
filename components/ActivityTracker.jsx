@@ -1,7 +1,7 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
 
-export default function ActivityTracker({ activityData }) {
+export default function ActivityTracker({ variant, activityData }) {
 	const dateOnly = activityData[0]?.created_at.split("T")[0];
 
 	for (let activity of activityData) {
@@ -32,6 +32,14 @@ export default function ActivityTracker({ activityData }) {
 		dates.push(`${yyyy}-${mm}-${dd}`);
 	}
 
+	const tday = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+	const postsToday = activityData?.filter((post) => {
+		return post.created_at.startsWith(tday);
+	});
+	const currentYear = new Date().getFullYear();
+	const currentYearActivitiesCount = activityData.filter(
+		(activity) => new Date(activity.created_at).getFullYear() === currentYear,
+	);
 	return (
 		<>
 			<div>
@@ -40,6 +48,28 @@ export default function ActivityTracker({ activityData }) {
 						{post.id} : {post.file_src}
 					</div>
 				))} */}
+				{variant == "profile" && (
+					<div className="w-full mt-20 mb-2">
+						<h1 className="text-2xl font-bold">Your Activity</h1>
+						<div className="flex gap-4 items-center">
+							{postsToday.length == 0 ? (
+								<p className="text-lg">No activity today.</p>
+							) : postsToday.length == 1 ? (
+								<p className="text-lg">One activity today.</p>
+							) : (
+								<p className="text-lg">{postsToday.length} activities today.</p>
+							)}
+							<p>|</p>
+							{currentYearActivitiesCount.length == 0 ? (
+								<p className="text-lg">No activity this year.</p>
+							) : currentYearActivitiesCount.length == 1 ? (
+								<p className="text-lg">One activity this year.</p>
+							) : (
+								<p className="text-lg">{currentYearActivitiesCount.length} activities this year.</p>
+							)}
+						</div>
+					</div>
+				)}
 				<div className="inline-grid grid-cols-26 auto-cols-min gap-x-[3px] gap-y-[3px] w-full">
 					{dates.map((day) => {
 						const hasActivity = activityData.some((post) => post.created_at === day);
