@@ -7,6 +7,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 import { EllipsisVertical } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDistanceToNow } from "date-fns";
@@ -19,18 +20,22 @@ export default function ThreadPost({ author, content, likes, authUserID }) {
 		<Card>
 			<CardHeader>
 				<CardTitle className="flex items-center">
-					<Avatar>
-						<AvatarImage src={author.avatar} />
-						<AvatarFallback>
-							{author.name
-								.split(" ")
-								.map((word) => word[0])
-								.join("")
-								.toUpperCase()}{" "}
-						</AvatarFallback>
-					</Avatar>
+					<Link href={`/user/${author.id}`}>
+						<Avatar>
+							<AvatarImage src={author.avatar} />
+							<AvatarFallback>
+								{author.name
+									.split(" ")
+									.map((word) => word[0])
+									.join("")
+									.toUpperCase()}{" "}
+							</AvatarFallback>
+						</Avatar>
+					</Link>
 					<div className="flex flex-col">
-						<h1 className="text-xl">{author.name}</h1>
+						<Link href={`/user/${author.id}`}>
+							<h1 className="text-xl">{author.name}</h1>
+						</Link>
 						<CardDescription>{timeAgo}</CardDescription>
 					</div>
 				</CardTitle>

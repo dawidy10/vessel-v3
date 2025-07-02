@@ -2,7 +2,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import Link from "next/link";
 
 export default function ActivityTracker({ activityData }) {
-	const dateOnly = activityData[0].created_at.split("T")[0];
+	const dateOnly = activityData[0]?.created_at.split("T")[0];
 
 	for (let activity of activityData) {
 		activity.created_at = activity.created_at.split("T")[0];

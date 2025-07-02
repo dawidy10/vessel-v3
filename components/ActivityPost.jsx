@@ -7,6 +7,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 import { EllipsisVertical } from "lucide-react";
 import { GalleryVerticalEnd } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -20,22 +21,26 @@ export default function ActivityPost({ author, content, authUserID }) {
 			<Card>
 				<CardHeader>
 					<CardTitle className="flex">
-						<Avatar>
-							<AvatarImage src={author.avatar} />
-							<AvatarFallback>
-								{author.name
-									.split(" ")
-									.map((word) => word[0])
-									.join("")
-									.toUpperCase()}{" "}
-							</AvatarFallback>
-						</Avatar>
+						<Link href={`/user/${author.id}`}>
+							<Avatar>
+								<AvatarImage src={author.avatar} />
+								<AvatarFallback>
+									{author.name
+										.split(" ")
+										.map((word) => word[0])
+										.join("")
+										.toUpperCase()}{" "}
+								</AvatarFallback>
+							</Avatar>
+						</Link>
 						<div className="flex flex-col">
 							<div className="flex items-bottom gap-4">
 								{authUserID == author.id ? (
 									<h1 className="text-xl">You tracked an activity.</h1>
 								) : (
-									<h1 className="text-xl">{author.name} tracked an activity.</h1>
+									<Link href={`/user/${author.id}`}>
+										<h1 className="text-xl">{author.name} tracked an activity.</h1>
+									</Link>
 								)}
 							</div>
 							<CardDescription>{timeAgo}</CardDescription>
