@@ -1,6 +1,7 @@
 "use client";
 import { followUser } from "@/actions/followUser";
 import { useState } from "react";
+import { Button } from "./ui/button";
 
 export default function FollowButton({ user, followers, authUserId }) {
 	const [isFollowing, setisFollowing] = useState(followers.some((e) => e.follower_id == authUserId.user.id) ? 1 : 0);
@@ -30,9 +31,9 @@ export default function FollowButton({ user, followers, authUserId }) {
 			<form action={followUser}>
 				<input type="hidden" name="userId" id="userId" value={user.id} />
 				<input type="hidden" name="isFollowing" id="isFollowing" value={isFollowing ? 0 : 1} />
-				<button onClick={handleClick} type="submit" className={`px-2 py-1 text-xl mt-2`}>
-					{isRequested ? "Cancel Request" : isFollowing ? "Unfollow" : "Follow"}
-				</button>
+				<Button className="font-bold cursor-pointer mt-2" onClick={handleClick} type="submit">
+					<p>{isRequested ? "Cancel Request" : isFollowing ? "Unfollow" : "Follow"}</p>
+				</Button>
 			</form>
 		</>
 	);

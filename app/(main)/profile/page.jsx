@@ -22,7 +22,7 @@ export default async function ProfilePage() {
 			<div className="flex flex-col items-center w-[60vw] mt-10">
 				{profileData && <Profile profileData={profileData} />}
 				{posts && <ActivityTracker variant="profile" activityData={posts} />}
-				<div className="mt-10">
+				<div className="mt-10 w-[35vw]">
 					{posts ? (
 						posts.map((post, index) => (
 							<div className="mt-10" key={index}>
