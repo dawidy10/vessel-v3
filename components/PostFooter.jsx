@@ -24,7 +24,7 @@ export default function PostFooter({ postID, authUserID, likes, comments }) {
 							<Heart className="cursor-pointer" />
 						)}
 					</button>
-					<p className="px-3 pt-1">{likesCount}</p>
+					<p className="px-3">{likesCount}</p>
 				</form>
 				<MessageSquareText className="cursor-pointer" />
 			</div>
