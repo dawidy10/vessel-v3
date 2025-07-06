@@ -15,12 +15,24 @@ export default async function ProfilePage() {
 		.select("*, profiles(id,username, name, avatar), likes(user_id)")
 		.eq("author_id", data.user.id);
 
+	const { data: followedUsers, error: followedUsersError } = await supabase
+		.from("followers")
+		.select("following_id")
+		.eq("follower_id", data.user.id);
+
+	const { data: followers, error: followersError } = await supabase
+		.from("followers")
+		.select("follower_id")
+		.eq("following_id", data.user.id);
+
 	// console.log(posts);
 
 	return (
 		<div className="flex flex-col items-center">
 			<div className="flex flex-col items-center w-[60vw] mt-10">
-				{profileData && <Profile profileData={profileData} />}
+				{profileData && (
+					<Profile profileData={profileData} followers={followers} followedUsers={followedUsers} />
+				)}
 				{posts && <ActivityTracker variant="profile" activityData={posts} />}
 				<div className="mt-10 w-[35vw]">
 					{posts ? (

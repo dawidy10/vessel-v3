@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserPen } from "lucide-react";
 
-export default function Profile({ profileData }) {
+export default function Profile({ profileData, followers, followedUsers }) {
 	return (
 		<>
 			<div className="flex items-center w-full justify-between">
@@ -19,7 +19,14 @@ export default function Profile({ profileData }) {
 					<div className="flex flex-col">
 						<h1 className="text-3xl font-bold">{profileData.name}</h1>
 						<p>@{profileData.username}</p>
-						<p>23 followers</p>
+						<div className="flex gap-2">
+							<p>
+								<span className="font-bold">{followers.length}</span> followers
+							</p>
+							<p>
+								<span className="font-bold">{followedUsers.length}</span> following
+							</p>
+						</div>
 					</div>
 				</div>
 				<UserPen />
