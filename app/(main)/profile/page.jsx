@@ -18,12 +18,14 @@ export default async function ProfilePage() {
 	const { data: followedUsers, error: followedUsersError } = await supabase
 		.from("followers")
 		.select("following_id")
-		.eq("follower_id", data.user.id);
+		.eq("follower_id", data.user.id)
+		.eq("accepted", true);
 
 	const { data: followers, error: followersError } = await supabase
 		.from("followers")
 		.select("follower_id")
-		.eq("following_id", data.user.id);
+		.eq("following_id", data.user.id)
+		.eq("accepted", true);
 
 	// console.log(posts);
 
