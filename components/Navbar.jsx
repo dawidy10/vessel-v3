@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import LogoVessel from "./Logo";
 import SearchBar from "./SearchBar";
-import { CirclePlus } from "lucide-react";
+import CreateDropdown from "./CreateDropdown";
 
 export default async function Navbar() {
 	const supabase = await createClient();
@@ -22,7 +22,7 @@ export default async function Navbar() {
 			<SearchBar />
 
 			<div className="flex gap-10 items-center">
-				<CirclePlus />
+				<CreateDropdown />
 				<NavDropdown avatar={profData[0].avatar} name={profData[0].name} />
 				<ThemeToggle />
 			</div>

@@ -15,7 +15,7 @@ export default function NavDropdown({ avatar, name }) {
 	return (
 		<>
 			<DropdownMenu>
-				<DropdownMenuTrigger className="focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0">
+				<DropdownMenuTrigger className="focus:outline-none">
 					<div className="flex cursor-pointer items-center gap-2">
 						<Avatar>
 							<AvatarImage src={avatar} />
