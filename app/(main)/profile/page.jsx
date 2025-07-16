@@ -13,7 +13,8 @@ export default async function ProfilePage() {
 	const { data: posts, postsError } = await supabase
 		.from("posts")
 		.select("*, profiles(id,username, name, avatar), likes(user_id)")
-		.eq("author_id", data.user.id);
+		.eq("author_id", data.user.id)
+		.order("created_at", { ascending: false });
 
 	const { data: followedUsers, error: followedUsersError } = await supabase
 		.from("followers")
@@ -33,7 +34,12 @@ export default async function ProfilePage() {
 		<div className="flex flex-col items-center">
 			<div className="flex flex-col items-center w-[60vw] mt-10">
 				{profileData && (
-					<Profile profileData={profileData} followers={followers} followedUsers={followedUsers} />
+					<Profile
+						profileData={profileData}
+						followers={followers}
+						followedUsers={followedUsers}
+						posts={posts}
+					/>
 				)}
 				{posts && <ActivityTracker variant="profile" activityData={posts} />}
 				<div className="mt-10 w-[35vw]">

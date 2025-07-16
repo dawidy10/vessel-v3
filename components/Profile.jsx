@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserPen } from "lucide-react";
 import Streak from "./Streak";
 
-export default function Profile({ profileData, followers, followedUsers }) {
+export default function Profile({ profileData, followers, followedUsers, posts }) {
 	return (
 		<>
 			<div className="flex items-center w-full justify-between">
@@ -20,7 +20,7 @@ export default function Profile({ profileData, followers, followedUsers }) {
 					<div className="flex flex-col">
 						<div className="flex items-center gap-4">
 							<h1 className="text-3xl font-bold">{profileData.name}</h1>
-							<Streak />
+							<Streak posts={posts} />
 						</div>
 						<p>@{profileData.username}</p>
 						<div className="flex gap-2">
