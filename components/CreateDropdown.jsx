@@ -30,7 +30,7 @@ export default function CreateDropdown() {
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem className="cursor-pointer">
-					<Link className="flex items-center gap-2" href="/">
+					<Link className="flex items-center gap-2" href="/upload/annotation">
 						<BookOpenText className="text-foreground" />
 						<p>New Annotation</p>
 					</Link>
