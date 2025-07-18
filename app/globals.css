@@ -69,6 +69,14 @@ input:focus {
 	cursor: pointer;
 }
 
+@layer utilities {
+	.no-scrollbar-arrows::-webkit-scrollbar-button {
+		display: none;
+		height: 0;
+		width: 0;
+	}
+}
+
 :root {
 	/* --font-main: "Montserrat", sans-serif;
 	--font-title: "K2D", sans-serif; */
