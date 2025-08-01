@@ -10,7 +10,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { NotebookPen } from "lucide-react";
+import { Button } from "./ui/button";
 export default function UploadAnnotationForm() {
 	const [bibleData, setBibleData] = useState([]);
 	const [selectedVersion, setSelectedVersion] = useState("");
@@ -136,7 +137,13 @@ export default function UploadAnnotationForm() {
 							))}
 					</div>
 				)}
-				{selectedVerses && (
+				{selectedVerses.length > 0 && (
+					<Button className="cursor-pointer">
+						<NotebookPen /> Annotate
+					</Button>
+				)}
+
+				{/* {selectedVerses && (
 					<div className="mt-6">
 						{selectedVerses.map((v) => (
 							<p key={v}>
@@ -144,7 +151,7 @@ export default function UploadAnnotationForm() {
 							</p>
 						))}
 					</div>
-				)}
+				)} */}
 			</div>
 		</>
 	);
